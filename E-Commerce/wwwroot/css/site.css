@@ -14,80 +14,35 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 400px;
+}
+
+.navbar {
+    position: fixed;
+    display: block;
+    top: 0;
+    width: 100%; 
+    transition: top 0.3s;
 }
 
 .navbar a {
-    text-decoration: none;
     float: left;
+    margin: auto;
     color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: "Open Sans", Italic, sans-serif;
-    font-size: 17px;
-    background-color: white;
-}
-
-.navbar a:hover{
-    text-decoration: none;
-}
-
-.navbar a::after {
-    content: '';
     display: block;
-    width: 0;
-    height: 2px;
-    background: black;
-    transition: width .3s;
+    text-align: center;
+    padding: 12px;
+    font-size: 17px;
+    color: white;
+    text-decoration: none;
 }
 
-.navbar a:hover a::after {
-    width: 100%;
-    transition: width .3s;
+.navbar a:hover {
+    border-bottom: 3px solid red;
 }
 
-.slideshow {
-    margin: auto;
-    width: 40px;
-    margin: 10px;
-}
-
-* {
-    box-sizing: border-box
-}
-
-.slideshow-container {
-    max-width: 175px;
-    margin: auto;
-    position: absolute;
-}
-
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-    from {
-        opacity: .4
-    }
-
-    to {
-        opacity: 1
-    }
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-
-    to {
-        opacity: 1
-    }
+.navbar a:active {
+    border-bottom: 3px solid red;
 }
 
 body {
