@@ -1,0 +1,51 @@
+﻿
+/*#region Sign in hyperlink*/
+.hyperlink a {
+    text-align: right;
+    float: right;
+    color: black;
+    border-bottom: 0;
+}
+/*#endregion*/
+
+.text-below-img {
+    text-align: center;
+}
+
+#header {
+    color: black;
+    background-color: transparent;
+    text-align: left; 
+    font-size: 24px; 
+    font-weight: bold;
+    width: 10000px; 
+    transition: ease-in-out 0.15s;
+    margin-left: 0px;
+}
+
+.sign-up-button {
+    border: 0;
+    animation: animateBg 10s linear infinite;
+    width: 100px;
+    text-align: center;
+    position: absolute;
+    left: 46%;
+    border-radius: 25px;
+    color: white;
+    background-image: linear-gradient(0deg,#cf5c5c,#c19b4a,#def2a0,#c6ee4a,#42eca6,#64b3d9,#208ea2,#498ada,#5b73df,#897ed3,#cf5c5c,#c19b4a);
+    background-size: 100% 1100%;
+}
+
+.sign-up-button:hover {
+    opacity: 0.8;
+}
+
+@keyframes animateBg {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}
