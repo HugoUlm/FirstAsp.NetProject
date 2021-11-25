@@ -7,31 +7,65 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/E_Commerce.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/78f697b773.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Shoe Brand</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                    <ul class="navbar-nav mb-2">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  asp-area="" asp-controller="SignUp" asp-action="Index">Sign Up</a>
-                        </>
-                        <li class="nav-item">
-                            <a class="nav-link"  asp-area="" asp-controller="SignIn" asp-action="Index">Sign In</a>
-                        </li>
                     </ul>
+
+                    <div class="d-flex flex-column align-items-md-end">
+                        <ul class="navbar-nav small">
+                            <li class="pre-brand-item">
+                                <a class="nav-link" asp-area="" asp-controller="SignUp" asp-action="Index">Sign Up</a>
+                                <span class="pre-sign-separator">|</span>
+                            </li>
+                            <li class="pre-brand-item">
+                                <a class="nav-link" asp-area="" asp-controller="SignIn" asp-action="Index">Sign In</a>
+                            </li>
+                        </ul>
+                        <form class="navbar-search pl-0" action="">
+                            <div class="input-group mb-0">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                    <input class="form-control white-text border-0 z-depth-0 pl-5" type="text" placeholder="Search" aria-label="Search">
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="navbar-nav text-right">
+                            <li class="nav-icon">
+                                <a class="nav-link navbar-link-2 waves-effect">
+                                    <i class="far fa-heart pl-0"></i>
+                                </a>
+                            </li>
+                            <li class="nav-icon">
+                                <a href="ShoppingCart" class="nav-link navbar-link-2 waves-effect">
+                                    <span class="material-icons-outlined">shopping_cart</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

@@ -17,12 +17,14 @@ body {
   margin-bottom: 400px;
 }
 
+/*#region navbar*/
 .navbar {
     position: fixed;
     display: block;
     top: 0;
     width: 100%; 
     transition: top 0.3s;
+    height: 70px;
 }
 
 .navbar a {
@@ -31,37 +33,110 @@ body {
     color: black;
     display: block;
     text-align: center;
-    padding: 12px;
+    padding: 5px;
     font-size: 17px;
     color: white;
     text-decoration: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+/*#endregion*/
+
+/*#region navbar items*/
+.navbar-brand {
+    position: relative;
+    top: -34px;
 }
 
-.navbar a:hover {
+.nav-item {
+    position: relative;
+    top: -30px;
+}
+
+.nav-item a:hover {
+    border-bottom: 3px solid black;
+}
+
+.nav-item a:active {
     border-bottom: 3px solid red;
+}  
+
+.nav-icon {
+    position: relative;
+    top: -65px;
+    cursor: pointer;
+}
+/*#endregion*/
+
+/*#region small navbar*/
+.pre-brand-item a {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -5px;
+    right: 0;
 }
 
-.navbar a:active {
-    border-bottom: 3px solid red;
+.pre-brand-item span.pre-sign-separator {
+    position: relative;
+    top: -3px;
+}
+/*#endregion*/
+
+/*#region searchbar*/
+.input-group {
+    left: -80px;
 }
 
-body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    height: 100vh;
+/*Searchbar*/
+.form-control {
+    border-radius: 25px;
+    border: 0;
+    position: relative;
+    top: -30px;
+    width: 100px;
+    right: -10px;
+    transition: ease-in-out, width .35s ease-in-out;
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+.form-control:hover {
+    background-color: lightgray;
 }
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: lightgray;
+    width: 180px;
+}
+
+.input-group input {
+    padding-left: 37px;
+}
+
+/*Search button*/
+.input-group-btn i {
+    border-radius: 25px;
+    position: relative;
+    top: -12px;
+    padding: 9px;
+    left: -17px;
+}
+
+.input-group-btn i:hover {
+    background-color: lightgray;
+}
+
+.input-group button {
+    position: relative;
+    border-radius: 25px;
+    width: 10%;
+    height: 25px;
+    right: -17px;
+}
+/*#endregion*/
