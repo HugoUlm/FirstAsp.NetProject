@@ -1,10 +1,42 @@
-﻿
+﻿@model CustomerViewModel
+
 @{
     ViewData["Title"] = "Sign In";
 }
 
 <article style="margin:70px"/>
 
-<h1>@ViewData["Title"]</h1>
+<head>
+    <link rel="stylesheet" href="~/css/signIn.css" asp-append-version="true" />
+</head>
 
+<body>
+    <div class="title">
+        <h1>Rooster</h1>
+    </div>
 
+    <div class="signIn-container">
+        <div class="pre-text">
+            <p>Your exclusive offers and community is waiting for you.</p>
+        </div>
+
+        <form class="textbox-container">
+            <input required class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Email address" aria-label="Email">
+            <input required class="form-controller white-text z-depth-0 pl-5" type="password" placeholder="Password" aria-label="Password">
+
+            <div class="small-text">
+                <a href="">Forgot password?</a>
+            </div>
+
+            <div class="button-container">
+                <a><button class="signIn-btn" type="submit">Sign In</button></a>
+            </div>
+
+            <div class="signUp-link">
+                <p>Not a member? <a href="/SignUp/Register">Sign Up</a></p>
+            </div>
+        </form>
+
+    </div>
+
+</body>

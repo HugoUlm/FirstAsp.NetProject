@@ -1,7 +1,66 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Register";
 }
 
-<h1>Register</h1>
+@model IEnumerable<CountryViewModel>
 
+<article style="margin:70px"></article>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-name">
+        <h1>Become a Rooster member</h1>
+    </div>
+
+    <div class="register-container">
+        <div class="bottom-text">
+            <p>Join us and get first hand access to our products and community.</p>
+        </div>
+
+        <form class="textbox-container">
+            <input required class="form-controller white-text z-depth-0 pl-5" type="email" placeholder="Email address" aria-label="Email">
+            <input required class="form-controller white-text z-depth-0 pl-5" type="password" placeholder="Password" aria-label="Password">
+            <input required class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="First name" aria-label="FirstName">
+            <input required class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Last name" aria-label="LastName">
+            <input required class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Date of Birth" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+
+            <div class="country-dd">
+                <select required class="dropdown-country white-text z-depth-0 pl-5">
+                    <option class="country" value="" disabled selected>Country</option>
+                    @foreach (var country in Model)
+                    {
+                        <option>
+                            @Html.DisplayFor(a => country.name)
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="gender-dd">
+                <select required class="dropdown-gender white-text z-depth-0 pl-5">
+                    <option class="gender" value="" disabled selected>Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+
+            <div class="policy-text">
+                <p>By creating an account you agree to Rooster's <a href="">Privacy policy</a> and <a href="">Terms of Use</a>.</p>
+            </div>
+
+            <div class="button-container">
+                <a><button class="signUp-btn" type="submit">Join Us</button></a>
+            </div>
+
+            <div class="login-link">
+                <p>Already a member? <a href="/SignIn">Sign in</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
