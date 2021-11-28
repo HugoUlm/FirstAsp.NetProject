@@ -1,20 +1,25 @@
+@font-face {
+    font-family: "Roboto Condensed";
+    src: url(https://fonts.google.com/specimen/Roboto+Condensed);
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 400px;
+    margin-bottom: 400px;
 }
 
 /*#region navbar*/
@@ -22,7 +27,7 @@ body {
     position: fixed;
     display: block;
     top: 0;
-    width: 100%; 
+    width: 100%;
     transition: top 0.3s;
     height: 70px;
 }
@@ -43,14 +48,22 @@ body {
 /*#endregion*/
 
 /*#region navbar items*/
+.brand-container {
+    position: absolute;
+    width: 135px;
+    left: -2%;
+    top: -17px;
+}
+
 .navbar-brand {
-    position: relative;
-    top: -34px;
+    height: auto;
+    max-width: 100%;
 }
 
 .nav-item {
     position: relative;
-    top: -30px;
+    top: -20px;
+    left: 30%;
 }
 
 .nav-item a:hover {
@@ -59,7 +72,7 @@ body {
 
 .nav-item a:active {
     border-bottom: 3px solid red;
-}  
+}
 
 .nav-icon {
     position: relative;

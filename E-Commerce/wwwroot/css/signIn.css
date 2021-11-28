@@ -1,0 +1,76 @@
+﻿.title h1 {
+    text-align: center;
+    font-size: 24px;
+}
+
+.signIn-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.pre-text {
+    text-align: center;
+    width: 25%;
+    display: block;
+    margin: 0 auto;
+}
+
+.pre-text p {
+    color: gray;
+    font-size: 14px;
+}
+
+.textbox-container {
+    width: 25%;
+    height: 5%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.form-controller {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.button-container a:hover {
+    opacity: 0.8;
+}
+
+.signIn-btn {
+    border: 0;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    margin-bottom: 7px;
+}
+
+.small-text {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.small-text a {
+    color: gray;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.signUp-link {
+    display: block;
+    margin: 0 auto;
+}
+
+.signUp-link p {
+    color: gray;
+}
+
+.signUp-link a {
+    color: black;
+}
