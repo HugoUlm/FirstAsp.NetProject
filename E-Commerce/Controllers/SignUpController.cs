@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using Datalayer;
+using static Datalayer.BusinessLogic.CustomerProcessor;
 
 namespace E_Commerce.Controllers
 {
@@ -14,13 +16,17 @@ namespace E_Commerce.Controllers
             _logger = logger;
         }
 
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public async Task<IActionResult> Register()
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Registers()
         {
             List<CountryViewModel> CountryInfo = new List<CountryViewModel>();
 
@@ -38,6 +44,19 @@ namespace E_Commerce.Controllers
             }
 
             return View(CountryInfo);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(CustomerViewModel customer)
+        {
+            if (ModelState.IsValid)
+            {
+                CreateCustomer(customer.EmailAddress, customer.FirstName, customer.LastName, customer.Birth, customer.Country, customer.Gender);
+                return RedirectToAction("Index", "SignIn");
+            }
+
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

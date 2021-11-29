@@ -1,10 +1,28 @@
-﻿
+﻿@model IEnumerable<ProductViewModel>
 @{
     ViewData["Title"] = "Products";
 }
 
 <article style="margin:70px"/>
 
-<h1>@ViewData["Title"]</h1>
-<p>New features coming soon!</p>
+<head>
+    <link rel="stylesheet" href="/css/products.css" asp-append-version="true" />
+</head>
+
+<body>
+    <h1>@ViewData["Title"]</h1>
+    <div class="items">
+        <div class="products-container">
+            <img src=~/nike-dunk-low-veneer.jpg/>
+            <h1>Brand</h1>
+            <p>Model</p>
+            <p>Price</p>
+        </div>
+    </div>
+
+</body>
+
+
+
+
 

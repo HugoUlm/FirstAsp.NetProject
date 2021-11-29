@@ -21,8 +21,18 @@
         </div>
 
         <form class="textbox-container">
-            <input required class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Email address" aria-label="Email">
-            <input required class="form-controller white-text z-depth-0 pl-5" type="password" placeholder="Password" aria-label="Password">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="Email">
+                <input asp-for="EmailAddress" class="form-controller white-text z-depth-0 pl-5" type="email" placeholder="Email address" aria-label="Email">
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="password">
+                <input asp-for="Password" class="form-controller white-text z-depth-0 pl-5" type="password" placeholder="Password" aria-label="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
 
             <div class="small-text">
                 <a href="">Forgot password?</a>
