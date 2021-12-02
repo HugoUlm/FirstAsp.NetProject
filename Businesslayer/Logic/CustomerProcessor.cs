@@ -1,12 +1,12 @@
-﻿using Datalayer.DataAccess;
-using Datalayer.Models;
+﻿using Businesslayer.Models;
+using Datalayer.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datalayer.BusinessLogic
+namespace Businesslayer.Logic
 {
     public static class CustomerProcessor
     {
