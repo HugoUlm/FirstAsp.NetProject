@@ -69,7 +69,7 @@
 }
 
 .country-dd select:invalid {
-    color: gray;
+    color: lightgray;
 }
 
 .dropdown-gender {
@@ -94,4 +94,104 @@
 
 .login-link a {
     color: black;
+}
+
+.snackbar-error i, .snackbar-success i {
+    margin: 10px 22px;
+    font-size: 2em;
+    vertical-align: middle;
+}
+
+#snackbar-success {
+    visibility: hidden;
+    min-width: 250px;
+    height: 6%;
+    margin-left: -14%;
+    background-color: #DFF2BF;
+    color: #4F8A10;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar-error {
+    visibility: hidden;
+    min-width: 250px;
+    height: 6%;
+    margin-left: -14%;
+    background-color: #FFD2D2;
+    color: #D8000C;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar-success.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbar-error.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        left: 0;
+        opacity: 0;
+    }
+
+    to {
+        left: 50%;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        left: 0;
+        opacity: 0;
+    }
+
+    to {
+        left: 50%;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        left: 50%;
+        opacity: 1;
+    }
+
+    to {
+        left: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        left: 50%;
+        opacity: 1;
+    }
+
+    to {
+        left: 0;
+        opacity: 0;
+    }
 }

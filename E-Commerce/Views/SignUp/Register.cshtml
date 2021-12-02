@@ -1,12 +1,20 @@
-﻿@model CustomerViewModel
+﻿@model GenericSignUpModel
 
 @{
     ViewData["Title"] = "Register";
 }
+
 <article style="margin:70px"></article>
 
 <head>
     <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+    <script src="~/js/register.js" type="text/javascript"></script>
+@*    <script type="text/javascript">
+        var customer = @Html.Raw(Json.Serialize(Model.Customer))
+        var test = @Html.Raw(Json.Serialize(ViewData.ModelState.IsValid))
+        Snackbar(test)
+    </script>*@
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 </head>
 
 <body>
@@ -25,60 +33,55 @@
 
     <div class="register-container">
 
-        <form asp-action="Register" class="textbox-container">
+        <form asp-action="Register" class="textbox-container" name="form" onsubmit="Test()">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <input asp-for="EmailAddress" class="form-controller white-text z-depth-0 pl-5" type="email" placeholder="Email address" />
-                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                <input asp-for="Customer.EmailAddress" class="form-controller white-text z-depth-0 pl-5" type="email" placeholder="Email address" name="email" />
+                <span asp-validation-for="Customer.EmailAddress" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input asp-for="Password" class="form-controller white-text z-depth-0 pl-5" type="password" placeholder="Password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <input asp-for="Customer.Password" class="form-controller white-text z-depth-0 pl-5" type="password" placeholder="Password" name="password" />
+                <span asp-validation-for="Customer.Password" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input asp-for="FirstName" class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="First name" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+                <input asp-for="Customer.FirstName" class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="First name" name="first-name" />
+                <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input asp-for="LastName" class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Last name" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+                <input asp-for="Customer.LastName" class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Last name" name="last-name" />
+                <span asp-validation-for="Customer.LastName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input asp-for="Birth" class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Date of Birth" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
-                <span asp-validation-for="Birth" class="text-danger"></span>
+                <input asp-for="Customer.Birth" class="form-controller white-text z-depth-0 pl-5" type="text" placeholder="Date of Birth" onfocus="(this.type='date')" onfocusout="(this.type='text')" name="birth" />
+                <span asp-validation-for="Customer.Birth" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <input asp-for="Country" class="form-controller white-text z-depth-0 pl-5" />
-                <span asp-validation-for="Country" class="text-danger"></span>
-            </div>
-
-@*            <div class="country-dd">
-                <select asp-for="name" class="dropdown-country white-text z-depth-0 pl-5">
+            <div class="country-dd">
+                <select asp-for="Customer.Country" class="dropdown-country white-text z-depth-0 pl-5" name="country">
                     <option class="country" value="" disabled selected>Country</option>
-                    @foreach (var country in Model)
+                    @foreach (var country in Model.Countries)
                     {
                         <option>
                             @Html.DisplayFor(a => country.name)
                         </option>
                     }
                 </select>
-                <span asp-validation-for="name" class="text-danger"></span>
-            </div>*@
+                <span asp-validation-for="Customer.Country" class="text-danger"></span>
+            </div>
 
             <div class="gender-dd">
-                <select asp-for="Gender" class="dropdown-gender white-text z-depth-0 pl-5">
+                <select asp-for="Customer.Gender" class="dropdown-gender white-text z-depth-0 pl-5" name="gender">
                     <option class="gender" value="" disabled selected>Gender</option>
                     <option>Male</option>
                     <option>Female</option>
                 </select>
-                <span asp-validation-for="Gender" class="text-danger"></span>
+                <span asp-validation-for="Customer.Gender" class="text-danger"></span>
             </div>            
 
             <div class="policy-text">
@@ -86,7 +89,7 @@
             </div>
 
             <div class="button-container">
-                <input class="signUp-btn" type="submit" value="Create account"/>
+                <input class="signUp-btn" type="submit" value="Create account" id="submit-btn"/>
             </div>
 
            <div class="login-link">
@@ -94,5 +97,15 @@
            </div>
 
         </form>
+
+        <div id="snackbar-error">
+            <i class="fa fa-times-circle"></i>
+            ERROR! Please fill in all the fields to create your account!
+        </div>
+        <div id="snackbar-success">
+            <i class="fa fa-check"></i>
+            SUCCESS! Your account has been created!
+        </div>
+
     </div>
 </body>

@@ -2,33 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
-using Datalayer;
-using static Datalayer.BusinessLogic.CustomerProcessor;
+using static Businesslayer.Logic.CustomerProcessor;
 
 namespace E_Commerce.Controllers
 {
     public class SignUpController : Controller
     {
-        private readonly ILogger<SignUpController> _logger;
-
-        public SignUpController(ILogger<SignUpController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
-            return View();
-        }
-
-        public async Task<IActionResult> Registers()
-        {
-            List<CountryViewModel> CountryInfo = new List<CountryViewModel>();
+            GenericSignUpModel model = new GenericSignUpModel();
+            model.Countries = new List<CountryViewModel>();
 
             using (var client = new HttpClient())
             {
@@ -37,26 +25,26 @@ namespace E_Commerce.Controllers
                 if (apiResponse.IsSuccessStatusCode)
                 {
                     //Storing the response details recieved from web api
-                    var CountryResponse = apiResponse.Content.ReadAsStringAsync().Result;
+                    var countryResponse = apiResponse.Content.ReadAsStringAsync().Result;
                     //Deserializing the response recieved from web api and storing into the Employee list
-                    CountryInfo = JsonConvert.DeserializeObject<List<CountryViewModel>>(CountryResponse);
+                    model.Countries = JsonConvert.DeserializeObject<List<CountryViewModel>>(countryResponse).ToList();
                 }
             }
 
-            return View(CountryInfo);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(CustomerViewModel customer)
+        public IActionResult Register(GenericSignUpModel model) // Send confirmation e-mail
         {
             if (ModelState.IsValid)
             {
-                CreateCustomer(customer.EmailAddress, customer.FirstName, customer.LastName, customer.Birth, customer.Country, customer.Gender);
+                CreateCustomer(model.Customer.EmailAddress, model.Customer.FirstName, model.Customer.LastName, model.Customer.Birth, model.Customer.Country, model.Customer.Gender);
                 return RedirectToAction("Index", "SignIn");
             }
-
-            return View();
+            Thread.Sleep(3000);
+            return RedirectToAction("Register");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
