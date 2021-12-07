@@ -22,15 +22,10 @@
 //}
 
 function Test() {
-    var email = document.forms["form"]["email"].value;
-    var password = document.forms["form"]["password"].value;
-    var firstName = document.forms["form"]["first-name"].value;
-    var lastName = document.forms["form"]["last-name"].value;
-    var country = document.forms["form"]["country"].value;
-    var gender = document.forms["form"]["gender"].value;
-    var birth = document.forms["form"]["birth"].value;
+    var form = document.forms["form"].value;
 
-    if (!email || !password || !firstName || !lastName || !country || !birth || !gender) {
+
+    if (!form) {
         // Get the snackbar DIV
         var x = document.getElementById("snackbar-error");
 

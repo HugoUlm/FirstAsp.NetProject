@@ -6,6 +6,7 @@ using static Businesslayer.Logic.CustomerProcessor;
 
 namespace E_Commerce.Controllers
 {
+
     public class SignUpController : Controller
     {
         public IActionResult Index()
@@ -15,7 +16,7 @@ namespace E_Commerce.Controllers
 
         public async Task<IActionResult> Register()
         {
-            GenericSignUpModel model = new GenericSignUpModel();
+            GenericSignUpViewModel model = new GenericSignUpViewModel();
             model.Countries = new List<CountryViewModel>();
 
             using (var client = new HttpClient())
@@ -36,11 +37,11 @@ namespace E_Commerce.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(GenericSignUpModel model) // Send confirmation e-mail
+        public IActionResult Register(GenericSignUpViewModel model) // Send confirmation e-mail
         {
             if (ModelState.IsValid)
             {
-                CreateCustomer(model.Customer.EmailAddress, model.Customer.FirstName, model.Customer.LastName, model.Customer.Birth, model.Customer.Country, model.Customer.Gender);
+                CreateCustomer(model.Customer.EmailAddress, model.Customer.Password, model.Customer.FirstName, model.Customer.LastName, model.Customer.Birth, model.Customer.Country, model.Customer.Gender);
                 return RedirectToAction("Index", "SignIn");
             }
             Thread.Sleep(3000);

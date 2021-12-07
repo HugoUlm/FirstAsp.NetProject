@@ -12,7 +12,7 @@ namespace E_Commerce.Models
 
         [DisplayName("Password")]
         [Required(ErrorMessage = "Please enter a password.")]
-        public string Password { get; set; } // Hash password in db and de-hash on login (Not solved)
+        public string Password { get; set; }
         [DisplayName("First name")]
         [Required(ErrorMessage = "Please enter your first name.")]
         public string FirstName { get; set; }
@@ -32,11 +32,6 @@ namespace E_Commerce.Models
         [DisplayName("Gender")]
         [Required(ErrorMessage = "Please enter your gender.")]
         public string Gender { get; set; }
-
-        public bool Empty 
-        { 
-            get { return EmailAddress != null && Password != null && FirstName != null && LastName != null && Country != null && Gender != null; }
-        }
     }
 }
 
