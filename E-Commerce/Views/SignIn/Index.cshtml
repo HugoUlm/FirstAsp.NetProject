@@ -1,4 +1,4 @@
-﻿@model CustomerViewModel
+﻿@model LogInViewModel
 
 @{
     ViewData["Title"] = "Sign In";
@@ -20,26 +20,26 @@
             <p>Your exclusive offers and community is waiting for you.</p>
         </div>
 
-        <form class="textbox-container">
+        <form asp-action="Index" class="textbox-container">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="Email">
+            <div class="form-group">
                 <input asp-for="EmailAddress" class="form-controller white-text z-depth-0 pl-5" type="email" placeholder="Email address" aria-label="Email">
                 <span asp-validation-for="EmailAddress" class="text-danger"></span>
             </div>
-            <div class="password">
+
+            <div class="form-group">
                 <input asp-for="Password" class="form-controller white-text z-depth-0 pl-5" type="password" placeholder="Password" aria-label="Password">
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-
 
             <div class="small-text">
                 <a href="">Forgot password?</a>
             </div>
 
             <div class="button-container">
-                <a><button class="signIn-btn" type="submit">Sign In</button></a>
+                <input class="signIn-btn" type="submit" value="Sign In" />
             </div>
 
             <div class="signUp-link">

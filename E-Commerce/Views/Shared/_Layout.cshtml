@@ -41,16 +41,29 @@
                         </li>
                     </ul>
 
+
                     <div class="d-flex flex-column align-items-md-end">
-                        <ul class="navbar-nav small">
-                            <li class="pre-brand-item">
-                                <a class="nav-link" asp-area="" asp-controller="SignUp" asp-action="Index">Sign Up</a>
-                                <span class="pre-sign-separator">|</span>
-                            </li>
-                            <li class="pre-brand-item">
-                                <a class="nav-link" asp-area="" asp-controller="SignIn" asp-action="Index">Sign In</a>
-                            </li>
-                        </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <ul class="navbar-nav small">
+                                <li class="pre-brand-item">
+                                    <a class="nav-link" asp-area="" asp-controller="SignUp" asp-action="Index">@User.Identity.Name</a>
+                                </li>
+                            </ul>      
+                        }
+                        else
+                        {
+                            <ul class="navbar-nav small">
+                                <li class="pre-brand-item">
+                                    <a class="nav-link" asp-area="" asp-controller="SignUp" asp-action="Index">Sign Up</a>
+                                    <span class="pre-sign-separator">|</span>
+                                </li>
+                                <li class="pre-brand-item">
+                                    <a class="nav-link" asp-area="" asp-controller="SignIn" asp-action="Index">Sign In</a>
+                                </li>
+                            </ul>                            
+                        }
+
                         <form class="navbar-search pl-0" action="">
                             <div class="input-group mb-0">
                                 <div class="input-group-prepend">
