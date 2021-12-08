@@ -15,5 +15,6 @@ namespace Businesslayer.Models
         public byte[] Images { get; set; }
         public int Size { get; set; }
         public int InStock { get; set; }
+        public string ProductNo { get; set; }
     }
 }

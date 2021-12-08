@@ -9,11 +9,30 @@ namespace E_Commerce.Controllers
     {
         public IActionResult Index()
         {
+            return View(GetProducts());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Product(int id)
+        {
+            var product = GetProducts().FirstOrDefault(x => x.Id == id);
+            ViewBag.ProductName = product.Model;
+            return View("Product", product);
+        }
+
+        public IActionResult Product()
+        {
+            return View();
+        }
+
+        public List<ProductViewModel> GetProducts()
+        {
             List<ProductViewModel> products = new List<ProductViewModel>();
             var data = LoadProducts();
 
             products = data.Select(x => new ProductViewModel()
             {
+                Id = x.Id,
                 Brand = x.Brand,
                 Model = x.Model,
                 Images = x.Images,
@@ -22,7 +41,7 @@ namespace E_Commerce.Controllers
                 Price = x.Price
             }).ToList();
 
-            return View(products);
+            return products;
         }
     }
 }
