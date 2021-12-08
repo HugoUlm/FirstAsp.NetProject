@@ -30,14 +30,17 @@
                 <p class="instock">In stock</p>
             }
             <form class="form-container">
-                <input type="button" value="@Model.Size US" class="size-btn" />
+                @foreach (var size in Model.Sizes)
+                {
+                    <input type="button" value="@size.Size US" class="size-btn" />                   
+                }
                 <button class="like-btn" type="button">Favorite <i id="like-icon" class="far fa-heart pl-0"></i></button>
                 <input type="submit" value="Add to cart" class="cart-btn" />
             </form>
 
             <p>@Model.Description</p>
 
-            <div tabindex="0" class="dd" onclick="Toogle()">
+            <div tabindex="0" class="dd" onclick="Dropdown()">
                 <span class="shipping">Shipping<i id="icon" class ="fas fa-angle-down"></i></span>
                 <div class="dd-content">
                     <p>All Rooster members get free shipping</p>

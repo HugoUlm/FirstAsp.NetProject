@@ -63,6 +63,7 @@
   <ItemGroup>
     <Build Include="dbo\Tables\Customer.sql" />
     <Build Include="dbo\Tables\Products.sql" />
+    <Build Include="dbo\Tables\Sizes.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Profiles\Database.publish.xml" />

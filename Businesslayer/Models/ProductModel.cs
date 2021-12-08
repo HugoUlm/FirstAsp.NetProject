@@ -13,7 +13,7 @@ namespace Businesslayer.Models
         public string Model { get; set; }
         public int Price { get; set; }
         public byte[] Images { get; set; }
-        public int Size { get; set; }
+        public List<SizeModel> Sizes { get; set; }
         public int InStock { get; set; }
         public string ProductNo { get; set; }
         public string Description { get; set; }
