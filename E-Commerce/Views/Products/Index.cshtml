@@ -17,7 +17,7 @@
             {
                 var base64 = Convert.ToBase64String(product.Images);
                 var imgSrc = String.Format("data:image/gif;base64, {0}", base64);
-                <a href="@Url.ActionLink("Product", "Products", new {id = product.Id})">
+                <a href="@Url.ActionLink("Product", "Products", new {model = product.Model})">
                     <div class="models-container">
                         <img src="@imgSrc" />
                         <h1>@Html.DisplayFor(x => product.Brand)</h1>

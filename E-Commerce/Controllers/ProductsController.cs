@@ -13,10 +13,9 @@ namespace E_Commerce.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Product(int id)
+        public async Task<IActionResult> Product(string model)
         {
-            var product = GetProducts().FirstOrDefault(x => x.Id == id);
-            ViewBag.ProductName = product.Model;
+            var product = GetProducts().FirstOrDefault(x => x.Model == model);
             return View("Product", product);
         }
 
@@ -38,7 +37,9 @@ namespace E_Commerce.Controllers
                 Images = x.Images,
                 Size = x.Size,
                 InStock = x.InStock,
-                Price = x.Price
+                Price = x.Price,
+                ProductNo = x.ProductNo,
+                Description = x.Description
             }).ToList();
 
             return products;

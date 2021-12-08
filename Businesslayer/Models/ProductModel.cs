@@ -16,5 +16,6 @@ namespace Businesslayer.Models
         public int Size { get; set; }
         public int InStock { get; set; }
         public string ProductNo { get; set; }
+        public string Description { get; set; }
     }
 }
