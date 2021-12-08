@@ -1,18 +1,13 @@
 ﻿using Businesslayer.Models;
 using Datalayer.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Businesslayer.Logic
 {
     public class ProductProcessor
     {
-        public static List<ProductModel> LoadCustomers()
+        public static List<ProductModel> LoadProducts()
         {
-            string sql = @"select Id, Brand, Model, Price from dbo.Product;";
+            string sql = @"select * from dbo.Products;";
 
             return SqlDataAccess.LoadData<ProductModel>(sql);
         }

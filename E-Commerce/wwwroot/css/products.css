@@ -1,16 +1,23 @@
-﻿
-
-
-.products-container {
-    max-width: 200px;
-    margin: auto;
+﻿.products-container {
+    display: flex;
 }
 
-.products-container h1 {
+.models-container {
+    max-width: 200px;
+    margin: 40px;
+}
+
+.models-container h1 {
     font-size: 20px;
 }
 
-.products-container img {
+.models-container img {
     height: auto;
     max-width: 100%;
+    transition: 0.2s;
+}
+
+.models-container img:hover {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
 }
