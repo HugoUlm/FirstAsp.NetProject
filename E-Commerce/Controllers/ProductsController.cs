@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using static Businesslayer.Logic.ProductProcessor;
 using static Businesslayer.Logic.SizesProcessor;
-using static Businesslayer.Logic.ShoppingCartProcessor;
 using Newtonsoft.Json;
 
 namespace E_Commerce.Controllers
