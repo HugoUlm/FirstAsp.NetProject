@@ -25,17 +25,65 @@
             <h1>@Model.Brand</h1>
             <h3>@Model.Model</h3>
             <p>@Model.Price KR</p>
+
             @if (Model.InStock > 0)
             {
                 <p class="instock">In stock</p>
             }
+            else
+            {
+                <p class="instock">Out of stock</p>
+            }
+
             <form class="form-container">
-                @foreach (var size in Model.Sizes)
-                {
-                    <input type="button" value="@size.Size US" class="size-btn" />                   
-                }
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    @for (int i = 0; i < Model.Sizes.Count; i++)
+                    {
+                        <td>
+                            <input asp-for="Sizes" type="button" value="@Model.Sizes[i].Size US" class="size-btn" onclick="SetSize(this.value)" />
+                            <span asp-validation-for="Sizes"></span>
+                        </td>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <input id="size" name="size" type="hidden" value=""/>
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="Brand" type="hidden" value="@Model.Brand" />
+                    <span asp-validation-for="Brand"></span>
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="Model" type="hidden" value="@Model.Model" />
+                    <span asp-validation-for="Model"></span>
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="Price" type="hidden" value="@Model.Price" />
+                    <span asp-validation-for="Price"></span>
+                </div>
+
+                <div class="form-group">
+                    <input name="img" type="hidden" value="@Model.Images" />
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="Id" type="hidden" value="@Model.Id" />
+                    <span asp-validation-for="Id"></span>
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="ProductNo" type="hidden" value="@Model.ProductNo" />
+                    <span asp-validation-for="ProductNo"></span>
+                </div>
+
                 <button class="like-btn" type="button">Favorite <i id="like-icon" class="far fa-heart pl-0"></i></button>
-                <input type="submit" value="Add to cart" class="cart-btn" />
+                <input type="submit" value="Add to cart" class="cart-btn" formaction="AddProduct" />
             </form>
 
             <p>@Model.Description</p>

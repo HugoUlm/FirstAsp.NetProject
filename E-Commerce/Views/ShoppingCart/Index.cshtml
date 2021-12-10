@@ -1,7 +1,17 @@
-﻿
+﻿@model ShoppingCartViewModel
+
 @{
     ViewData["Title"] = "Cart";
 }
 
-<h1>Index</h1>
+<article style="margin:70px"/>
+
+<body>
+    @foreach (var item in Model.Items)
+    {
+        <h1>@item.Brand</h1>            
+    }
+    
+</body>
+
 
