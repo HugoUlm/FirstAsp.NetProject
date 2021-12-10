@@ -13,7 +13,10 @@ namespace E_Commerce.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// API sends get request to retrive all countries and populates a list.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Register()
         {
             GenericSignUpViewModel model = new GenericSignUpViewModel();
@@ -35,10 +38,27 @@ namespace E_Commerce.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Sign up for customers. Checks if input email is already registred.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Register(GenericSignUpViewModel model) // Send confirmation e-mail
         {
+            var data = LoadCustomers();
+            foreach (var customer in data)
+            {
+                if (model.Customer.EmailAddress.Equals(customer.EmailAddress))
+                {
+                    return RedirectToAction("Register");
+                }
+                else
+                {
+                    break;
+                }
+            }
             if (ModelState.IsValid)
             {
                 CreateCustomer(model.Customer.EmailAddress, model.Customer.Password, model.Customer.FirstName, model.Customer.LastName, model.Customer.Birth, model.Customer.Country, model.Customer.Gender);
@@ -46,12 +66,6 @@ namespace E_Commerce.Controllers
             }
             Thread.Sleep(3000);
             return RedirectToAction("Register");
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
