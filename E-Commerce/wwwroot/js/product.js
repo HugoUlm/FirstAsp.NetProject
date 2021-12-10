@@ -17,3 +17,8 @@ function Dropdown() {
         }
     }
 }
+
+function SetSize(val) {
+    result = document.getElementById('size');
+    result.value = result.value ? parseInt(val) : parseInt(val);
+}
