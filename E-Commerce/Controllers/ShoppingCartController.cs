@@ -13,19 +13,23 @@ namespace E_Commerce.Controllers
             cart.Items = new List<ShoppingCartItemViewModel>();
 
             var value = HttpContext.Session.GetString("cartItem");
-            var item = JsonConvert.DeserializeObject<ShoppingCartItemViewModel>(value);
-            cart.Items.Add(new ShoppingCartItemViewModel
+            if (value != null)
             {
-                Id = item.Id,
-                Brand = item.Brand,
-                Model = item.Model,
-                Price = item.Price,
-                ProductNo = item.ProductNo,
-                Size = item.Size,
-                Images = item.Images
-            });
+                var item = JsonConvert.DeserializeObject<ShoppingCartItemViewModel>(value);
+                cart.Items.Add(new ShoppingCartItemViewModel
+                {
+                    Id = item.Id,
+                    Brand = item.Brand,
+                    Model = item.Model,
+                    Price = item.Price,
+                    ProductNo = item.ProductNo,
+                    Size = item.Size,
+                    Images = item.Images
+                });
+                return View(value == null ? default(ShoppingCartViewModel) : cart);
+            }
 
-            return View(value == null ? default(ShoppingCartViewModel) : cart);
+            return View(cart);
         }
     }
 }
