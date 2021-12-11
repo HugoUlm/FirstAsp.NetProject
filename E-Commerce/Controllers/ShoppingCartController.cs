@@ -11,21 +11,14 @@ namespace E_Commerce.Controllers
         {
             ShoppingCartViewModel cart = new ShoppingCartViewModel();
             cart.Items = new List<ShoppingCartItemViewModel>();
-
             var value = HttpContext.Session.GetString("cartItem");
+
             if (value != null)
             {
-                var item = JsonConvert.DeserializeObject<ShoppingCartItemViewModel>(value);
-                cart.Items.Add(new ShoppingCartItemViewModel
-                {
-                    Id = item.Id,
-                    Brand = item.Brand,
-                    Model = item.Model,
-                    Price = item.Price,
-                    ProductNo = item.ProductNo,
-                    Size = item.Size,
-                    Images = item.Images
-                });
+                var item = JsonConvert.DeserializeObject<ShoppingCartViewModel>(value);
+                cart.Items.AddRange(item.Items);
+                HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cart.Items));
+
                 return View(value == null ? default(ShoppingCartViewModel) : cart);
             }
 

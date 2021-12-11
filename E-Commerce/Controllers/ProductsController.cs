@@ -22,8 +22,11 @@ namespace E_Commerce.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProduct(ProductViewModel product, string size)
         {
+            ShoppingCartViewModel shoppingCart = new ShoppingCartViewModel();
+            shoppingCart.Items = new List<ShoppingCartItemViewModel>();
             ShoppingCartItemViewModel cart = new ShoppingCartItemViewModel();
             var products = LoadProducts();
+            var value = HttpContext.Session.GetString("cart");
 
             foreach (var productItem in products)
             {
@@ -39,9 +42,21 @@ namespace E_Commerce.Controllers
                         ProductNo = productItem.ProductNo,
                         Size = Convert.ToInt32(size)
                     };
+                    shoppingCart.Items.Add(cart);
+
+                    if (value != null)
+                    {
+                        var item = JsonConvert.DeserializeObject<List<ShoppingCartItemViewModel>>(value);
+                        foreach (var p in item)
+                        {
+                            shoppingCart.Items.Add(p);
+                        }
+                    }
+
+                    HttpContext.Session.SetString("cartItem", JsonConvert.SerializeObject(shoppingCart));
+                    break;
                 }
             }
-            HttpContext.Session.SetString("cartItem", JsonConvert.SerializeObject(cart));
 
             return RedirectToAction("Index", "ShoppingCart");
         }

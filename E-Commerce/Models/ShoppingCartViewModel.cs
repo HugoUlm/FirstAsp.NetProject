@@ -1,8 +1,10 @@
-﻿namespace E_Commerce.Models
+﻿using Newtonsoft.Json;
+
+namespace E_Commerce.Models
 {
     public class ShoppingCartViewModel
     {
-        public int? Id { get; set; }
+        [JsonProperty("CartItem")]
         public List<ShoppingCartItemViewModel>? Items { get; set; }
     }
 }
