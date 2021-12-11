@@ -28,9 +28,7 @@ namespace E_Commerce.Controllers
 
                 if (apiResponse.IsSuccessStatusCode)
                 {
-                    //Storing the response details recieved from web api
                     var countryResponse = apiResponse.Content.ReadAsStringAsync().Result;
-                    //Deserializing the response recieved from web api and storing into the Employee list
                     model.Countries = JsonConvert.DeserializeObject<List<CountryViewModel>>(countryResponse).ToList();
                 }
             }
