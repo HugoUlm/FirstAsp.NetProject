@@ -4,14 +4,74 @@
     ViewData["Title"] = "Cart";
 }
 
-<article style="margin:70px"/>
+<head>
+    <link rel="stylesheet" href="~/css/shoppingCart.css" asp-append-version="true" />
+</head>
+
+<article style="margin:80px"/>
 
 <body>
-    @foreach (var item in Model.Items)
+    @if (!User.Identity.IsAuthenticated)
     {
-        <h1>@item.Brand</h1>            
+        <div class="shipping-text">
+            <h4>All Rooster members get free shipping</h4>
+            <p><a href="../SignUp/Register">Join us</a> now to take part of more exclusive offers or<a href="../SignIn">Sign In!</a></p>
+        </div>            
     }
-    
+
+    @if (Model.Items.Count > 0)
+    {
+        <br />
+        <h2>Shopping cart</h2>
+        <br />
+        <br />
+
+        @foreach (var item in Model.Items)
+        {
+            var base64 = Convert.ToBase64String(@item.Images);
+            var imgSrc = String.Format("data:image/gif;base64, {0}", base64);
+            <div class="item-container">
+                <div class="img-container">
+                    <img src="@imgSrc">
+                </div>
+
+                <div class="cart-item-text">
+                    <p class="name">@item.Brand @item.Model</p>
+                    <p class="size">Size: @item.Size</p>
+                </div>
+
+                <div class="price">
+                    <p>@item.Price KR</p>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h1>Your cart is empty!</h1>
+        <p>Add products before check out!</p>
+    }
+
+    <div class="cost-container">
+        <h5>Total cost</h5>
+
+        <div class="text">
+            <p class="same-line">Cost of Products<p id="cost" class="cost">@Model.Items.Sum(x => x.Price) KR</p></p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p class="same-line">Shipping fee<p id="shipping" class="cost">0 KR</p></p>
+            }
+            else
+            {
+                <p class="same-line">Shipping fee<p id="shipping" class="cost">49 KR</p></p>
+            }
+            <p class="same-line">Total<p id="cost-text" class="cost" onload="GetTotal()">0 KR</p></p>
+        </div>
+
+        <input type="submit" class="checkout-btn" value="Check out" />
+    </div>
+
+    <script src="~/js/shoppingCart.js" asp-append-version="true"></script>
 </body>
 
 

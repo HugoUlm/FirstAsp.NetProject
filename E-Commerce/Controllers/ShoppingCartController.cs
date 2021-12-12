@@ -6,6 +6,10 @@ namespace E_Commerce.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        /// <summary>
+        /// Fetches items from session and displays all items in cart and saves to a new session.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Index()
         {
