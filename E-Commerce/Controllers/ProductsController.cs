@@ -13,11 +13,30 @@ namespace E_Commerce.Controllers
         {
             return View(GetProducts());
         }
+
         public IActionResult Product()
         {
             return View();
         }
 
+        /// <summary>
+        /// Adds all products in view.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> Product(string model)
+        {
+            var product = GetProducts().FirstOrDefault(x => x.Model == model);
+            return View("Product", product);
+        }
+
+        /// <summary>
+        /// Adds chosen product to cart. If there is products in cart it adds those with the new product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
         [HttpGet]
         [HttpPost]
         public async Task<IActionResult> AddProduct(ProductViewModel product, string size)
@@ -61,13 +80,12 @@ namespace E_Commerce.Controllers
             return RedirectToAction("Index", "ShoppingCart");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Product(string model)
-        {
-            var product = GetProducts().FirstOrDefault(x => x.Model == model);
-            return View("Product", product);
-        }
 
+
+        /// <summary>
+        /// Fetches all products and sizes from db.
+        /// </summary>
+        /// <returns></returns>
         public List<ProductViewModel> GetProducts()
         {
             List<ProductViewModel> products = new List<ProductViewModel>();
