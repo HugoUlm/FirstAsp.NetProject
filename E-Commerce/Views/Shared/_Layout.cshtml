@@ -83,7 +83,7 @@
                                 </a>
                             </li>
                             <li class="nav-icon">
-                                <a href="ShoppingCart" class="nav-link navbar-link-2 waves-effect">
+                                <a href="../ShoppingCart" class="nav-link navbar-link-2 waves-effect" data-totalitems="0">
                                     <span class="material-icons-outlined">shopping_cart</span>
                                 </a>
                             </li>
@@ -98,9 +98,19 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
+    <footer>
+
         <div class="container">
             &copy; 2021 - Hugo Ulmgren - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="text">
+                <a>About us</a>
+                <a>Support</a>
+            </div>
+            <div class="cards">
+                <i class="fas fa-credit-card"></i>
+                <p>Payment options</p>
+            </div>
+            <img alt="Credit Card Logos" title="Credit Card Logos" src="https://www.shift4shop.com/images/credit-card-logos/cc-sm-5.png" width="249" height="28" border="0" />
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

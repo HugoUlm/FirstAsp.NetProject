@@ -22,6 +22,35 @@ body {
     margin-bottom: 400px;
 }
 
+footer {
+    color: white;
+    background-color: #420042;
+    height: 300px;
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    bottom: 0;
+}
+
+.cards {
+    margin: 30px 0 10px 0;
+    display: block;
+}
+
+.cards i, .cards p {
+    text-align: left;
+    display: inline;
+    color: white;
+}
+
+.text a {
+    margin-top: 10px;
+    color: white;
+    border-bottom: none;
+    display: block;
+    font-weight: 600;
+}
+
 /*#region navbar*/
 .navbar {
     position: fixed;
@@ -50,7 +79,7 @@ body {
 /*#region navbar items*/
 .brand-container {
     position: absolute;
-    width: 135px;
+    max-width: 8%;
     left: -2%;
     top: -17px;
 }
